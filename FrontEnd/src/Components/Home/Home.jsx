@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
+// import  { useEffect } from 'react'
 import "./Home.css"
-import HomeImg from "./Linkbee_Home_Image.webp"
+// import HomeImg from "./Linkbee_Home_Image.webp"
 import bee from "./elem2.webp";
 import axios from "axios";
 
@@ -29,7 +29,7 @@ export default function Home(props) {
                     </div>
                 </div>
             </div>
-            <img onClick={() => { window.location.href = "https://linkbeemern.vercel.app/ankit" }} src={HomeImg} alt="" />
+            {/* <img onClick={() => { window.location.href = "https://linkbeemern.vercel.app/ankit" }} src={HomeImg} alt="" /> */}
         </main>
     )
 }

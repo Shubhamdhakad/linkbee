@@ -29,11 +29,11 @@ async function handleUpload(file) {
 }
 
 const PORT = process.env.PORT || 3000;
-
+   
 require("dotenv").config();
-
+ 
 const app = express();
-
+ 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -42,15 +42,15 @@ connectToMongoDB(process.env.MONGO_URL);
 console.log(process.env.MONGO_URL, process.env.PORT);
 // origin: "http://localhost:5173",
 
-// app.use(cors({
-//     origin: "http://localhost:5173",
-//     credentials: true 
-// }));
-
 app.use(cors({
-    origin: "https://linkbeemern.vercel.app",
-    credentials: true
+    origin: "http://localhost:5173",
+    credentials: true 
 }));
+
+// app.use(cors({
+//     origin: "https://linkbeemern.vercel.app",
+//     credentials: true
+// }));
 
 const storage = Multer.memoryStorage();
 const upload = Multer({ storage });
@@ -83,7 +83,7 @@ app.use("/user", userRoute);
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.use("/", (req, response) => {
-    response.send("Your backend is not live");
+    response.send("Your backend is live");
 });
 
 app.listen(PORT, () => {

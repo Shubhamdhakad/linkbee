@@ -4,6 +4,7 @@ const SECRET_KEY = "ankit";
 const verifyUser = (req, res, next) => {
     const token = req.cookies.token;
     if (!token) {
+        console.log("errorrr");
         return res.status(401).json({ message: 'Unauthorized: No token provided' });
     }
     jwt.verify(token, SECRET_KEY, (error, decoded) => {

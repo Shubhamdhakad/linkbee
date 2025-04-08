@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import  { useState, useEffect,  } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import Dummy from "./dummyimage.webp"
 import logo from "../Navbar/link bee.png"
@@ -283,14 +283,16 @@ export default function User() {
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await axios.get(`${backendLink}/user/`);
+                const response = await axios.get(`${backendLink}/user/` , {
+                    withCredentials : true,
+                });
                 const userData = response.data;
                 setID(userData.userID);
                 setuserID(userData.userID);
                 setprofile(userData.profile || '');
                 setbio(userData.bio || '');
-                const oldUrl = userData.imageUrl;
-                const newUrl = oldUrl.replace("http://", "https://");
+                const oldUrl = userData?.imageUrl;
+                const newUrl = oldUrl?.replace("http://", "https://");
                 setImageUrl(newUrl || Dummy);
                 setgradientValue(userData.gradient || '');
                 setFontFamily(userData.fontFamily || '');
@@ -301,6 +303,7 @@ export default function User() {
                 setLinkArray(userData.linkArray || []);
             }
             catch (error) {
+                console.log("shit:: ", error)
                 toast.error("Please Login", { autoClose: 1500 });
             }
         }
